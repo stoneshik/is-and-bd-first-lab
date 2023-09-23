@@ -26,9 +26,10 @@ CREATE TABLE IF NOT EXISTS users (
 
 CREATE TABLE IF NOT EXISTS messages (
     msg_id SERIAL PRIMARY KEY,
-    msg_sender INT NOT NULL REFERENCES users(usr_id) ON DELETE CASCADE,
-    msg_recipient INT NOT NULL REFERENCES users(usr_id) ON DELETE CASCADE,
+    msg_sender_user_id INT NOT NULL REFERENCES users(usr_id) ON DELETE CASCADE,
+    msg_recipient_user_id INT NOT NULL REFERENCES users(usr_id) ON DELETE CASCADE,
     msg_date_send TIMESTAMP NOT NULL DEFAULT current_timestamp,
+    msg_text_header VARCHAR(200) NOT NULL,
     msg_text_content TEXT NOT NULL
 );
 
