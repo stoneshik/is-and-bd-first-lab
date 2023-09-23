@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS videograms (
 );
 
 CREATE TABLE IF NOT EXISTS objects_in_videograms (
-    OBJ_IN_VID_ID integer,
+    OBJ_IN_VID_ID integer PRIMARY KEY,
     OBJ_ID integer REFERENCES OBJECTS(OBJ_ID) ON DELETE CASCADE
 );
 
