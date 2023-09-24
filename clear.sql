@@ -4,4 +4,5 @@ DROP TABLE IF EXISTS
     objects_in_videograms,
     users,
     messages,
-    videograms_in_messages;
+    videograms_in_messages
+    ;
