@@ -5,8 +5,15 @@ CREATE TABLE IF NOT EXISTS objects (
     obj_color VARCHAR(100) NOT NULL
 );
 
+CREATE TABLE IF NOT EXISTS users (
+    user_id SERIAL PRIMARY KEY,
+    user_name VARCHAR(100) NOT NULL,
+    user_surname VARCHAR(100) NOT NULL
+);
+
 CREATE TABLE IF NOT EXISTS videograms (
     vid_id SERIAL PRIMARY KEY,
+    user_id INT NOT NULL REFERENCES users(user_id) ON DELETE CASCADE,
     vid_name VARCHAR(100) NOT NULL,
     vid_date_of_creation TIMESTAMP NOT NULL DEFAULT current_timestamp,
     vid_content BYTEA NOT NULL
@@ -18,16 +25,10 @@ CREATE TABLE IF NOT EXISTS objects_in_videograms (
     vid_id INT NOT NULL REFERENCES videograms(vid_id) ON DELETE CASCADE
 );
 
-CREATE TABLE IF NOT EXISTS users (
-    usr_id SERIAL PRIMARY KEY,
-    usr_name VARCHAR(100) NOT NULL,
-    usr_surname VARCHAR(100) NOT NULL
-);
-
 CREATE TABLE IF NOT EXISTS messages (
     msg_id SERIAL PRIMARY KEY,
-    msg_sender_user_id INT NOT NULL REFERENCES users(usr_id) ON DELETE CASCADE,
-    msg_recipient_user_id INT NOT NULL REFERENCES users(usr_id) ON DELETE CASCADE,
+    msg_sender_user_id INT NOT NULL REFERENCES users(user_id) ON DELETE CASCADE,
+    msg_recipient_user_id INT NOT NULL REFERENCES users(user_id) ON DELETE CASCADE,
     msg_date_send TIMESTAMP NOT NULL DEFAULT current_timestamp,
     msg_text_header VARCHAR(200) NOT NULL,
     msg_text_content TEXT NOT NULL
