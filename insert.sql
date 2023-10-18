@@ -53,7 +53,7 @@ VALUES
     (0, 0, 'Первое видео плато', default, random_bytea(1000)),
     (1, 0, 'Второе видео плато', default, random_bytea(912)),
     (2, 0, 'Третье видео плато', default, random_bytea(450)),
-    (3, 2, 'Видео Невы', default, random_bytea(400)),
+    (3, 3, 'Видео Невы', default, random_bytea(400)),
     (4, 3, 'Видео апельсина', default, random_bytea(812))
     ;
 
